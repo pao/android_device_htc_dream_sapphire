@@ -104,12 +104,12 @@ include $(BUILD_PREBUILT)
 file := $(TARGET_OUT)/build.sapphire.prop
 ALL_PREBUILT += $(file)
 $(file) : $(LOCAL_PATH)/build.sapphire.prop | $(ACP)
-        $(transform-prebuilt-to-target)
+	$(transform-prebuilt-to-target)
 
 file := $(TARGET_OUT)/build.trout.prop
 ALL_PREBUILT += $(file)
 $(file) : $(LOCAL_PATH)/build.trout.prop | $(ACP)
-        $(transform-prebuilt-to-target)
+	$(transform-prebuilt-to-target)
 
 -include vendor/htc/dream_sapphire/AndroidBoardVendor.mk
 
