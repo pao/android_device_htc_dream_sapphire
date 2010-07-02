@@ -71,7 +71,34 @@ include $(CLEAR_VARS)
 LOCAL_SRC_FILES := trout-keypad-qwertz.kcm
 include $(BUILD_KEY_CHAR_MAP)
 
-include device/htc/dream_sapphire/AndroidBoardCommon.mk
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/kernel
+endif
+
+# from AndroidBoardCommon.mk
+file := $(INSTALLED_KERNEL_TARGET)
+ALL_PREBUILT += $(file)
+$(file): $(TARGET_PREBUILT_KERNEL) | $(ACP)
+	$(transform-prebuilt-to-target)
+
+file := $(TARGET_OUT_KEYLAYOUT)/h2w_headset.kl
+ALL_PREBUILT += $(file)
+$(file) : $(LOCAL_PATH)/h2w_headset.kl | $(ACP)
+	$(transform-prebuilt-to-target)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE_CLASS := ETC
+LOCAL_MODULE := vold.fstab
+LOCAL_SRC_FILES := $(LOCAL_MODULE)
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := wlan.ko
+LOCAL_MODULE_TAGS := user
+LOCAL_MODULE_CLASS := ETC
+LOCAL_MODULE_PATH := $(TARGET_OUT)/lib/modules
+LOCAL_SRC_FILES := $(LOCAL_MODULE)
+include $(BUILD_PREBUILT)
 
 -include vendor/htc/dream_sapphire/AndroidBoardVendor.mk
 
