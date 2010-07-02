@@ -100,5 +100,16 @@ LOCAL_MODULE_PATH := $(TARGET_OUT)/lib/modules
 LOCAL_SRC_FILES := $(LOCAL_MODULE)
 include $(BUILD_PREBUILT)
 
+# the system properties for each device, loaded by init
+file := $(TARGET_OUT)/build.sapphire.prop
+ALL_PREBUILT += $(file)
+$(file) : $(LOCAL_PATH)/build.sapphire.prop | $(ACP)
+        $(transform-prebuilt-to-target)
+
+file := $(TARGET_OUT)/build.trout.prop
+ALL_PREBUILT += $(file)
+$(file) : $(LOCAL_PATH)/build.trout.prop | $(ACP)
+        $(transform-prebuilt-to-target)
+
 -include vendor/htc/dream_sapphire/AndroidBoardVendor.mk
 
