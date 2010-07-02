@@ -58,6 +58,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.default_network=0
 
+# Disable JIT by default
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.execution-mode=int:fast
+
 # media configuration xml file
 PRODUCT_COPY_FILES += \
     device/htc/dream_sapphire/media_profiles.xml:/system/etc/media_profiles.xml
