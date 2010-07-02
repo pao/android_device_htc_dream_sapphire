@@ -29,6 +29,7 @@ TARGET_CPU_ABI := armeabi
 
 TARGET_NO_BOOTLOADER := true
 
+
 # Wifi related defines
 BOARD_WPA_SUPPLICANT_DRIVER := CUSTOM
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := libWifiApi
@@ -69,6 +70,8 @@ NO_FALLBACK_FONT:=true
 TARGET_RELEASETOOLS_EXTENSIONS := device/htc/common
 
 TARGET_BOOTLOADER_BOARD_NAME := sapphire
+TARGET_OTA_ASSERT_DEVICE := trout,sapphire
+PRODUCT_BUILD_PROP_OVERRIDES += TARGET_BOOTLOADER_BOARD_NAME=sapphire
 
 # # cat /proc/mtd
 # dev:    size   erasesize  name
